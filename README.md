@@ -16,3 +16,44 @@ The algorithm used in the question, i.e., to find the number of possible contigu
 - If prod is greater than or equal to k, we divide prod by a[left] and increment left until prod is less than k.
 - We add the number of subarrays that end at right to count, which is equal to right - left + 1.
 - We return the final value of count.
+
+## Visual Explanation
+
+```
+n = 4, k = 10
+a[] = {1, 2, 3, 4}
+```
+
+Step 1: Initialize variables
+```
+count = 0
+prod = 1
+left = 0
+```
+Step 2: Iterate through the array using a sliding window approach
+```
+right = 0:
+prod = 1 * 1 = 1
+count += right - left + 1 = 0
+count = 1
+
+right = 1:
+prod = 1 * 2 = 2
+count += right - left + 1 = 2
+count = 3
+
+right = 2:
+prod = 2 * 3 = 6
+count += right - left + 1 = 3
+count = 6
+
+right = 3:
+prod = 6 * 4 = 24
+while loop:
+    prod //= a[left] = 24 // 1 = 24 (left=1)
+    left += 1
+count += right - left + 1 = 3
+count = 9
+```
+Final count: 9
+So the number of possible contiguous subarrays having product less than 10 is 9.
